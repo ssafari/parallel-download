@@ -12,9 +12,9 @@ logger = logging.getLogger(__name__)
 
 
 def main():
-    client_id = os.getenv('IMGUR_CLIENT_ID')
+    client_id = os.getenv('CLIENT_ID')
     if not client_id:
-        raise Exception("Couldn't find IMGUR_CLIENT_ID environment variable!")
+        raise Exception("Couldn't find CLIENT_ID environment variable!")
     download_dir = setup_download_dir()
     links = get_links(client_id)
 
