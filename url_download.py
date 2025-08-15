@@ -8,9 +8,9 @@ logger = logging.getLogger(__name__)
 
 types = {'image/jpeg', 'image/png'}
 
-def get_links(client_id):
+def get_links(client_id, url):
     headers = {'Authorization': 'Client-ID {}'.format(client_id)}
-    req = Request('https://api.imgur.com/3/gallery/random/random/', headers=headers, method='GET')
+    req = Request(url', headers=headers, method='GET')
     with urlopen(req) as resp:
         data = json.loads(resp.read().decode('utf-8'))
     print(data['data'])
@@ -32,7 +32,9 @@ def setup_download_dir():
 
 
 def main():
-    data = get_links(CLIENT_ID)
+    url = 'https://www.example.com'
+    
+    data = get_links(CLIENT_ID, url)
     print('=======')
     print(data)
 
