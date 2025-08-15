@@ -8,9 +8,6 @@ logger = logging.getLogger(__name__)
 
 types = {'image/jpeg', 'image/png'}
 
-CLIENT_ID = '3865fe6be6fcaff'
-CLIENT_SECRET = 'c94ad42729e7f7652f4e55e78188c231f5c3e6c5'
-
 def get_links(client_id):
     headers = {'Authorization': 'Client-ID {}'.format(client_id)}
     req = Request('https://api.imgur.com/3/gallery/random/random/', headers=headers, method='GET')
