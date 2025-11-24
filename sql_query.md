@@ -56,3 +56,27 @@ GROUP BY co.id;
 "## promoted cisco"	       "3328391"	  "NULL"
 "amazon"	               "3434343"	  "** Num rating 3 average: 0.67"
 ```
+
+
+## PROBLEM 2:
+
+Having 2 tables PRODUCTS and ORDERS find the total quantity of each product sold into new table.
+
+- PRODUCTS has columns like PROD_ID, PROD_DESC
+- ORDERS has columns like PROD_ID, QTY
+
+### solution sql query:
+
+```
+SELECT
+    P.PROD_DESC,
+    SUM(O.QTY) AS TotalQuantity
+FROM
+    PRODUCTS AS P
+LEFT JOIN
+    ORDERS AS O ON P.PROD_ID = O.PROD_ID
+GROUP BY
+    P.PROD_DESC
+ORDER BY
+    P.PROD_ID;
+```
