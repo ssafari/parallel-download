@@ -85,9 +85,15 @@ ORDER BY
 ### Introduction to GROUP BY Clause
 
 ```
-SELECT Orders.order_date, COUNT(OrderItems.extended_support) AS TotalSupports
-FROM Orders
-JOIN OrderItems ON Orders.order_id = OrderItems.order_id
-GROUP BY Orders.order_date
-ORDER BY Orders.order_date DESC;
+SELECT
+    Orders.order_date,
+    COUNT(OrderItems.extended_support) AS TotalSupports
+FROM
+   Orders
+JOIN
+   OrderItems ON Orders.order_id = OrderItems.order_id
+GROUP BY
+   Orders.order_date
+ORDER BY
+   Orders.order_date DESC;
 ```
