@@ -35,16 +35,17 @@ of rating into rating column.
 
 ```
 SELECT 
-case
-	when co.promoted = 1 then concat('## promoted ', co.name) 
-	else co.name 
-end as company_name,
+CASE
+	WHEN co.promoted = 1 THEN CONCAT('## promoted ', co.name) 
+	ELSE co.name 
+END AS company_name,
 co.phone, 
-case 
-	when co.promoted = 0 then concat('** Num rating ', COUNT(ca.review_rating), ' average: ', ROUND(AVG(ca.review_rating)::numeric, 2))
-	else 'NULL'
-end as rating
-from companies as co join categories as ca on ca.company_id = co.id
+CASE 
+	WHEN co.promoted = 0 THEN concat('** Num rating ', COUNT(ca.review_rating), ' average: ', ROUND(AVG(ca.review_rating)::numeric, 2))
+	ELSE 'NULL'
+END AS rating
+FROM companies co
+JOIN categories ca ON ca.company_id = co.id
 GROUP BY co.id;
 ```
 
@@ -79,4 +80,14 @@ GROUP BY
     P.PROD_DESC
 ORDER BY
     P.PROD_ID;
+```
+
+### Introduction to GROUP BY Clause
+
+```
+SELECT Orders.order_date, COUNT(OrderItems.extended_support) AS TotalSupports
+FROM Orders
+JOIN OrderItems ON Orders.order_id = OrderItems.order_id
+GROUP BY Orders.order_date
+ORDER BY Orders.order_date DESC;
 ```
